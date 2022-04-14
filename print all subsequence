@@ -1,0 +1,36 @@
+//PRINT ALL SUBSEQUENCE
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void printF(int ind, vector<int> &ds, int a[], int n)
+{
+    if(ind == n)
+    {
+        for(auto it : ds)
+        {
+            cout<<it<<" ";
+        }
+        cout<<endl;
+        return;
+    }
+    ds.push_back(a[ind]);
+    printF(ind+1, ds, a, n);
+    ds.pop_back();
+    printF(ind+1, ds, a, n);
+}
+
+int main()
+{
+    int a[10], n;
+    cin>>n;
+    for(int i=0; i<n; i++)
+    {
+        cin>>a[i];
+    }
+   
+    vector<int> ds;
+    printF(0, ds, a, n);
+
+    return 0;
+}
