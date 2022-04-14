@@ -1,0 +1,46 @@
+//COUNT ALL SUBSEQUENCE WHOSE SUM IS K
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int printS(int ind, int s, int sum, int a[], int n)
+{
+    if(ind == n)
+    {
+        if(s == sum)
+        {
+          return 1;
+        }
+        else
+        {
+            return 0;
+        }
+        
+    }
+    
+    s += a[ind];
+    int l = printS(ind+1, s, sum, a, n);
+    
+    s -= a[ind];
+    int r = printS(ind+1, s, sum, a, n);
+    
+    return l+r;
+   
+}
+
+int main()
+{
+    int a[10], n, sum;
+    cin>>n;
+    cin>>sum;
+    for(int i=0; i<n; i++)
+    {
+        cin>>a[i];
+    }
+   
+    
+    cout<<printS(0, 0, sum, a, n)<<endl;
+
+    return 0;
+}
